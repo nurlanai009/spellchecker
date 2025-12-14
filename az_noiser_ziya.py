@@ -1,0 +1,307 @@
+import sys
+import random
+import numpy as np
+import re
+
+from typing import List, Dict, Any, Tuple
+from vocab import CASE, ENG, RULE_BASED, ADJACENT, WEIGHTED
+
+sys.setrecursionlimit(1500)
+
+class AzerbaijaniTextNoiser:
+
+    def __init__(
+        self,
+        eng_prob: float = 0.1,
+        rule_based_prob: float = 0.3,
+        weighted_prob: float = 0.5,
+        case_prob: float = 0.003,
+        adjacent_prob: float = 0.5,
+        swap_prob: float = 0.001,
+        remove_space: float = 0.005
+    ) -> None:
+
+        # External vocabularies for noise transformations
+        self.ENG: Dict[str, List[str]] = ENG
+        self.RULE_BASED: Dict[str, str] = RULE_BASED
+        self.WEIGHTED: Dict[str, Dict[str, float]] = WEIGHTED
+        self.ADJACENT: Dict[str, List[str]] = ADJACENT
+        self.CASE: Dict[str, str] = CASE
+
+        # Counter for recursion
+        self.recursion_counter: int = 0
+      
+        # Noise probabilities
+        self.eng_prob: float = eng_prob
+        self.rule_based_prob: float = rule_based_prob
+        self.weighted_prob: float = weighted_prob
+        self.case_prob: float = case_prob
+        self.adjacent_prob: float = adjacent_prob
+        self.swap_prob = swap_prob
+        self.remove_space = remove_space
+
+    # -------------------- NUMBER HELPERS --------------------
+
+    def _is_number(self, word: str) -> bool:
+        """
+        Detect purely numeric tokens.
+
+        Keeping this as a separate helper mirrors the other pipeline
+        and lets us change the definition later if needed (e.g. 1,000, 3.14).
+        """
+        return word.isdigit()
+
+    # -------------------- EDIT DISTANCE --------------------
+
+    def _edit_distance(self, s1: str, s2: str) -> int:
+        """
+        Compute Levenshtein edit distance between two strings.
+        """
+        if len(s1) > len(s2):
+            s1, s2 = s2, s1
+        previous_row = list(range(len(s2) + 1))
+        for i, c1 in enumerate(s1, start=1):
+            current_row = [i]
+            for j, c2 in enumerate(s2, start=1):
+                ins = current_row[j - 1] + 1
+                rem = previous_row[j] + 1
+                sub = previous_row[j - 1] + (c1 != c2)
+                current_row.append(min(ins, rem, sub))
+            previous_row = current_row
+        return previous_row[-1]
+
+    def _edit_distance_stats(self, s1: str, s2: str) -> Dict[str, Any]:
+        """
+        Compute overall and per-word edit-distance statistics.
+        """
+        sen_dist = self._edit_distance(s1, s2)
+        words1 = s1.split()
+        words2 = s2.split()
+        distances = [self._edit_distance(w1, w2) for w1, w2 in zip(words1, words2)]
+        avg_word = float(np.mean(distances)) if distances else 0.0
+        neigh = [((distances[i] + distances[i+1]) / 2) if i < len(distances)-1 else distances[i] for i in range(len(distances))]
+        avg_neigh = float(np.mean(neigh)) if neigh else 0.0
+        return {
+            "sentence_lev_distance": sen_dist,
+            "distances_per_word": distances,
+            "avg_word_lev_distance": avg_word,
+            "neigh_distances": neigh,
+            "avg_neigh_lev_distance": avg_neigh,
+        }
+
+    # -------------------- TRANSFORMATIONS --------------------
+
+    def _apply_eng_transformation(self, text: str) -> str:
+        """
+        Replace substrings based on English transliteration mappings.
+        """
+        for key, choices in self.ENG.items():
+            text = text.replace(key, random.choice(choices))
+        return text
+
+    def _apply_rule_based_transformation(self, text: str) -> str:
+        noisy: List[str] = []
+        for word in text.split():
+            for letter, repl in self.RULE_BASED.items():
+                if word.endswith(letter):
+                    word = word[:-1] + repl
+            noisy.append(word)
+        return " ".join(noisy)
+
+    def _apply_number_suffix_merge(self, text: str) -> str:
+        """
+        Merge patterns like '1-a', '2-cu', or '3 cu' into '1a', '2cu', '3cu'.
+        This is additional noise for tokens that combine a number and a suffix.
+        NOTE: digits themselves are not changed, only punctuation/spacing.
+        """
+        # 1-a, 2-cu -> 1a, 2cu
+        text = re.sub(
+            r"\b(\d+)-([A-Za-zƏÖĞÇŞİÜəöğçşıü]+)\b",
+            r"\1\2",
+            text,
+        )
+
+        # 1 a, 2 cu -> 1a, 2cu
+        text = re.sub(
+            r"\b(\d+)\s+([A-Za-zƏÖĞÇŞİÜəöğçşıü]+)\b",
+            r"\1\2",
+            text,
+        )
+
+        return text
+
+    def _apply_weighted_transformation(self, text: str) -> str:
+        """
+        Perform character substitutions based on WEIGHTED probabilities.
+
+        NUMBER-SAFE LOGIC:
+        - Do not touch tokens that are digits only.
+        - For mixed tokens, avoid mappings whose keys contain digits,
+          so we don't directly transform digits via WEIGHTED.
+        """
+        noisy = []
+        for word in text.split():
+            # if word is digit only, do not touch it
+            if self._is_number(word):
+                noisy.append(word)
+                continue
+
+            w = word
+            for key, char_probs in self.WEIGHTED.items():
+                # skip any mappings that target digit keys
+                # (keeps digits stable even in mixed tokens)
+                if any(ch.isdigit() for ch in key):
+                    continue
+
+                for char, prob in char_probs.items():
+                    if random.random() <= prob:
+                        r = random.random()
+                        if r <= 0.3:
+                            w = w.replace(key, char, 1)
+                        elif r <= 0.6:
+                            w = w[::-1].replace(key, char, 1)[::-1]
+                        else:
+                            w = w.replace(key, char, 1)
+                        break
+            noisy.append(w)
+        return " ".join(noisy)
+
+    def _apply_adjacent_transformation(self, text: str) -> str:
+        """
+        Introduce typos by replacing characters with adjacent keys.
+
+        NUMBER-SAFE LOGIC:
+        - Do not touch tokens that are digits only.
+        - For mixed tokens, ADJACENT is assumed to only have letter keys.
+        """
+        noisy = []
+        for word in text.split():
+            if self._is_number(word):
+                noisy.append(word)
+                continue
+
+            w = word
+            for key, reps in self.ADJACENT.items():
+                if random.random() <= self.adjacent_prob:
+                    rep = random.choice(reps)
+                    r = random.random()
+                    if r <= 0.3:
+                        w = w.replace(key, rep, 1)
+                    elif r <= 0.6:
+                        w = w[::-1].replace(key, rep, 1)[::-1]
+                    else:
+                        w = w.replace(key, rep, 1)
+                    break
+            noisy.append(w)
+        return " ".join(noisy)
+
+    def _apply_swap_transformation(self, text: str) -> str:
+        """
+        Swap adjacent characters in words.
+
+        NUMBER-SAFE LOGIC:
+        - Skip pure digit tokens.
+        - Do not swap positions of digits in mixed tokens: only swap adjacent
+          pairs where both characters are non-digits.
+        """
+        noisy = []
+        for word in text.split():
+            # skip short words and pure digit tokens
+            if len(word) < 2 or self._is_number(word):
+                noisy.append(word)
+                continue
+
+            chs = list(word)
+
+            # candidate positions where both characters are non-digits
+            candidates = [
+                i for i in range(len(chs) - 1)
+                if not chs[i].isdigit() and not chs[i + 1].isdigit()
+            ]
+
+            if candidates and random.random() <= self.swap_prob:
+                i = random.choice(candidates)
+                chs[i], chs[i + 1] = chs[i + 1], chs[i]
+
+            noisy.append("".join(chs))
+        return " ".join(noisy)
+
+    def _apply_space_removal_transformation(self, text: str) -> str:
+        """
+        Randomly remove spaces to simulate missing-space errors.
+        NOTE: This may join numbers and words, but does not change digits themselves.
+        """
+        return "".join(
+            ch for ch in text
+            if ch != " " or random.random() > self.remove_space
+        )
+
+    def _apply_case_transformation(self, text: str) -> str:
+        """
+        Randomly flip case of alphabetic characters based on case_prob.
+        Digits are unaffected because they are not alphabetic.
+        """
+        chars = list(text)
+        for i, ch in enumerate(chars):
+            if ch.isalpha() and random.random() < self.case_prob:
+                chars[i] = self.CASE.get(ch, ch)
+        return "".join(chars)
+
+    # -------------------- MAIN CALL --------------------
+
+    def __call__(self, text: str) -> Tuple[str, Dict[str, Any]]:
+        """
+        Apply noise transformations to the input text and return the noisy text
+        with edit-distance statistics.
+        """
+        original = text
+
+        # Optionally apply ENG transliteration noise
+        if random.random() <= self.eng_prob:
+            noisy = self._apply_eng_transformation(text)
+            return noisy, self._edit_distance_stats(text, noisy)
+
+        # Optional rule-based transformation
+        if random.random() <= self.rule_based_prob:
+            text = self._apply_rule_based_transformation(text)
+
+        # Either weighted mappings or adjacent-keyboard noise
+        text = (
+            self._apply_weighted_transformation(text)
+            if random.random() <= self.weighted_prob
+            else self._apply_adjacent_transformation(text)
+        )
+
+        text = self._apply_swap_transformation(text)
+        text = self._apply_case_transformation(text)
+        
+        # new: merge patterns like 1-a, 2-cu, 3 cu -> 1a, 2cu, 3cu
+        text = self._apply_number_suffix_merge(text)
+
+        stats = self._edit_distance_stats(original, text)
+        
+        # distance is computed BEFORE space removal
+        text = self._apply_space_removal_transformation(text)
+        
+        # Retry if noise is too low, too high, or none at all
+        if (
+            stats["sentence_lev_distance"] == 0 
+            or stats["sentence_lev_distance"] > 9
+            or stats["sentence_lev_distance"] < 4
+        ):
+            self.recursion_counter += 1
+            return self(original)
+
+        return text, stats
+    
+
+# Example usage
+if __name__ == "__main__":
+    noiser = AzerbaijaniTextNoiser()
+
+    sentence = "Mən bu gün Bakı şəhərinə gedirəm1. 11 2003-cü"
+    noisy_sentence, stats = noiser(sentence)
+
+    print("Original:", sentence)
+    print("Noisy:", noisy_sentence)
+    print("Stats:", stats)

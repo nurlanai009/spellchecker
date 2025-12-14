@@ -33,25 +33,27 @@ def main():
     # Get train and test file paths
     # Define file paths for multiple languages and data types
     train_files = [
-        # Path("data/train/train_sentences_azeri.json"),
-        # Path("data/train/train_sentences_english.json"),
-        # Path("data/train/train_sentences_russian.json"),
-        Path("data/train/train_words_azeri.json"),
-        # Path("data/train/train_words_english.json"),
-        # Path("data/train/train_words_russian.json"),
-        # Path("data/train/test_words_azeri.json"),
-        # Path("data/train/test_words_english.json"),
-        # Path("data/train/test_words_russian.json")
+        "data" / "train" / "train_sentences_azeri.json",
+        # "data" / "train" / "train_sentences_english.json",
+        # "data" / "train" / "train_sentences_russian.json",
+        "data" / "train" / "train_words_azeri.json",
+        "data" / "train" / "train_social_media_azeri.json",
+        "data" / "train" / "train_noised_number_sentences.json",
+        # "data" / "train" / "train_words_english.json",
+        # "data" / "train" / "train_words_russian.json",
+        
     ]
 
     val_files = [
-        # Path("data/test/test_sentences_azeri.json"),
-        # Path("data/test/test_sentences_english.json"),
-        # Path("data/test/test_sentences_russian.json"),
-        Path("data/train/test_words_azeri.json"),
-        # Path("data/train/test_words_english.json"),
-        # Path("data/train/test_words_russian.json")
-
+        # Testing data
+        "data" / "test" / "test_sentences_azeri.json",
+        "data" / "test" / "test_noised_number_sentences.json",
+        # "data" / "test" / "test_sentences_english.json",
+        "data" / "test" / "test_social_media_azeri.json",
+        # "data" / "test" / "test_sentences_russian.json",
+        "data" / "test" / "test_words_azeri.json",
+        # "data" / "test" / "test_words_english.json",
+        # "data" / "test" / "test_words_russian.json"
     ]
 
     # Verify all files exist
