@@ -22,7 +22,11 @@ class Tokenizer:
         # Azerbaijani lowercase alphabet
         self.alphabet = (
             "abcçdeəfgğhxıijkqlmnoöprsştuüvyz"  # Azerbaijani lowercase
+<<<<<<< HEAD
+            "ABCÇDEƏFGĞHXIİJKQLMNOÖPRSŞTUÜVYZ"  # Azerbaijani uppercase
+=======
             "ABCÇDEƏFGĞHXIIJKQLMNOÖPRSŞTUÜVYZ"  # Azerbaijani uppercase
+>>>>>>> origin/master
             "abcdefghijklmnopqrstuvwxyz"  # English lowercase
             "ABCDEFGHIJKLMNOPQRSTUVWXYZ"  # English uppercase
             "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"  # Russian lowercase

@@ -1,2 +1,61 @@
+<<<<<<< HEAD
+# macOS / editor noise
+.DS_Store
+*.swp
+*.swo
+
+# Python caches
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments and local archives
+.venv/
+venv/
+env/
+src.zip
+
+# Local projects / nested repos
+SentenceBoundaryDetection/
+
+# Training outputs
+checkpoints/
+models/
+runs/
+*.ckpt
+*.onnx
+*.log
+
+# Local/generated vocab files
+vocab.json
+data/pair/vocab.json
+
+# Generated noisy/pair datasets
+data/**/*noised*.json
+data/**/*noised*.jsonl
+data/**/*.pairs.jsonl
+data/processed/all_pairs*.json
+data/pair_split_v*/train*.json
+seq2seq/data/train/train_words_russian.json
+=======
 data.zip
 data
+>>>>>>> origin/master
+
+# Large generated/model/data files
+checkpoints/
+*.pt
+
+data/processed/
+data/nosied/
+data/pair_split_*/
+data/clean/mecelleler.jsonl.noised*.jsonl
+data/pair/mecelleler.jsonl.noised*.jsonl
+data/pair/mecelleler.noised*.pairs.jsonl
+
+seq2seq/data/train/train_words_russian.json
+seq2seq/data/train/test_words_russian.json

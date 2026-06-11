@@ -7,7 +7,11 @@ import json
 import os
 from pathlib import Path
 from tqdm import tqdm
+<<<<<<< HEAD
+from typing import List, Dict, Any, Iterable
+=======
 from typing import List, Dict
+>>>>>>> origin/master
 
 from src.tokenizer import Tokenizer
 from src.config import TOKENIZER_VOCAB_PATH, MAX_LENGTH
@@ -23,6 +27,59 @@ def load_json_data(path: Path) -> List[Dict[str, str]]:
         print(f"Error loading file {path}: {e}")
         return []
 
+<<<<<<< HEAD
+def _extract_texts_from_item(item: Any) -> List[str]:
+    """Extract relevant text fields from a single item."""
+    texts: List[str] = []
+    if isinstance(item, str):
+        texts.append(item)
+        return texts
+    if isinstance(item, dict):
+        for key in ("clean", "noisy", "original", "text", "content", "body"):
+            val = item.get(key)
+            if isinstance(val, str):
+                texts.append(val)
+        return texts
+    return texts
+
+
+def extract_texts_from_data(data: Iterable[Any]) -> List[str]:
+    """Extract all relevant texts from the data."""
+    texts: List[str] = []
+    for item in data:
+        for t in _extract_texts_from_item(item):
+            texts.append(t.lower())
+    return texts
+
+
+def train_tokenizer_from_combined(
+    combined_path: str,
+    vocab_path: str = TOKENIZER_VOCAB_PATH,
+    overwrite: bool = False,
+):
+    """Train a tokenizer on the combined.json file."""
+    if os.path.exists(vocab_path) and not overwrite:
+        print(f"Vocabulary file {vocab_path} already exists. Use overwrite=True to replace it.")
+        return
+
+    tokenizer = Tokenizer(max_length=MAX_LENGTH)
+
+    path = Path(combined_path)
+    if not path.exists():
+        print(f"Combined file not found: {combined_path}")
+        return
+
+    print(f"Loading combined data from {path}")
+    data = load_json_data(path)
+    texts = extract_texts_from_data(data)
+    print(f"Extracted {len(texts)} texts from {len(data)} items")
+
+    print("\nBuilding vocabulary...")
+    tokenizer.build_vocab(texts)
+    tokenizer.save_vocab(vocab_path)
+    print(f"Tokenizer vocabulary with {len(tokenizer.vocab)} tokens saved to {vocab_path}")
+
+=======
 def extract_texts_from_data(data: List[Dict[str, str]]) -> List[str]:
     """Extract all clean and noisy texts from the data."""
     texts = []
@@ -33,6 +90,7 @@ def extract_texts_from_data(data: List[Dict[str, str]]) -> List[str]:
             texts.append(item["noisy"].lower())
     return texts
 
+>>>>>>> origin/master
 def train_tokenizer(
     data_dir: str = "data", 
     vocab_path: str = TOKENIZER_VOCAB_PATH,
@@ -116,9 +174,15 @@ def train_tokenizer(
 
 def main():
     """Main function to train tokenizer."""
+<<<<<<< HEAD
+    # Train tokenizer on combined.json
+    train_tokenizer_from_combined(
+        combined_path="/Users/nurlanmalikov7294/Documents/naic/spellchecker/data/pair/combined.json",
+=======
     # Train tokenizer with all data files
     train_tokenizer(
         data_dir="data",
+>>>>>>> origin/master
         vocab_path=TOKENIZER_VOCAB_PATH,
         overwrite=True  # Set to False to avoid overwriting existing vocab
     )

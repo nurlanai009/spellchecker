@@ -1,0 +1,1272 @@
+{
+  "checkpoint": "checkpoints/best_attention_model_v3.pt",
+  "files": [
+    {
+      "file": "200k_words_test_noised.json",
+      "n": 2000,
+      "accuracy": 0.9765,
+      "identity_baseline_accuracy": 0.289,
+      "cer": 0.005502063273727648,
+      "identity_cer": 0.20437269239122566,
+      "buckets": {
+        "0 (identical)": {
+          "correct": 570,
+          "total": 578
+        },
+        "1": {
+          "correct": 635,
+          "total": 653
+        },
+        "2": {
+          "correct": 386,
+          "total": 391
+        },
+        "3-4": {
+          "correct": 315,
+          "total": 330
+        },
+        "5+": {
+          "correct": 47,
+          "total": 48
+        }
+      },
+      "mistake_examples": [
+        {
+          "noisy": "cikhara",
+          "clean": "çıxara",
+          "pred": "cıxara"
+        },
+        {
+          "noisy": "heg1qəddən",
+          "clean": "həqiqətdən",
+          "pred": "heçiqəddən"
+        },
+        {
+          "noisy": "effeqd1Vliyi",
+          "clean": "effektivliyi",
+          "pred": "əffekdi̇lliyi"
+        },
+        {
+          "noisy": "Lukasenko",
+          "clean": "Lukaşenko",
+          "pred": "Lukasenko"
+        },
+        {
+          "noisy": "State",
+          "clean": "State",
+          "pred": "Ştate"
+        },
+        {
+          "noisy": ",inli",
+          "clean": "çinli",
+          "pred": "Çinli"
+        },
+        {
+          "noisy": "ohyunuhs",
+          "clean": "oxunuş",
+          "pred": "oyunuş"
+        },
+        {
+          "noisy": "'ksine",
+          "clean": "Əksinə",
+          "pred": "əksinə"
+        },
+        {
+          "noisy": "TURKPA",
+          "clean": "TÜRKPA",
+          "pred": "TÜrkPA"
+        },
+        {
+          "noisy": "'leykum",
+          "clean": "əleykum",
+          "pred": "Əleykum"
+        },
+        {
+          "noisy": "qurgusu",
+          "clean": "qurğusu",
+          "pred": "qurğuşu"
+        },
+        {
+          "noisy": "berdıqleri",
+          "clean": "verdikləri",
+          "pred": "bərdiqləri"
+        },
+        {
+          "noisy": "Gulbudaq",
+          "clean": "Gülbudağ",
+          "pred": "Gülbudaq"
+        },
+        {
+          "noisy": "İshsizlıydən",
+          "clean": "İşsizlikdən",
+          "pred": "işsizlikdən"
+        },
+        {
+          "noisy": "xogmunün",
+          "clean": "hökmünün",
+          "pred": "xoçmünün"
+        },
+        {
+          "noisy": "ci",
+          "clean": "cı",
+          "pred": "ci"
+        },
+        {
+          "noisy": "haqımiyyadə",
+          "clean": "hakimiyyətə",
+          "pred": "hakimiyyətdə"
+        },
+        {
+          "noisy": "Xidmetinkn",
+          "clean": "Xidmətinkn",
+          "pred": "Xidmətinkən"
+        },
+        {
+          "noisy": "Keshm1r",
+          "clean": "Kəşmir",
+          "pred": "Keşmir"
+        },
+        {
+          "noisy": "M'sihin",
+          "clean": "Məsihin",
+          "pred": "Məşinin"
+        },
+        {
+          "noisy": "sertiphiqatlari",
+          "clean": "sertifikatları",
+          "pred": "sərtifiqatları"
+        },
+        {
+          "noisy": "Cakvetadze",
+          "clean": "Çakvetadze",
+          "pred": "Çakvet daze"
+        },
+        {
+          "noisy": "meet",
+          "clean": "meet",
+          "pred": "met"
+        },
+        {
+          "noisy": "Berdimehemmedov",
+          "clean": "Berdiməhəmmədov",
+          "pred": "Bərdiməhəmmədov"
+        },
+        {
+          "noisy": "Industries",
+          "clean": "Industries",
+          "pred": "İndustries"
+        },
+        {
+          "noisy": "Yeni",
+          "clean": "Yəni",
+          "pred": "Yeni"
+        },
+        {
+          "noisy": "hoqumad",
+          "clean": "hökumət",
+          "pred": "hoqumad"
+        },
+        {
+          "noisy": "mustagilliq",
+          "clean": "müstəqillik",
+          "pred": "mustaqıllıq"
+        },
+        {
+          "noisy": "Ksaba",
+          "clean": "Ksaba",
+          "pred": "Kaba"
+        },
+        {
+          "noisy": "ci",
+          "clean": "cı",
+          "pred": "ci"
+        }
+      ],
+      "regressions_top": [
+        {
+          "noisy": "Посмотреть",
+          "clean": "Посмотреть",
+          "pred": "Поsmıtrtı",
+          "noisy_dist": 0,
+          "pred_dist": 8,
+          "regression": 8
+        },
+        {
+          "noisy": "mustagilliq",
+          "clean": "müstəqillik",
+          "pred": "mustaqıllıq",
+          "noisy_dist": 4,
+          "pred_dist": 5,
+          "regression": 1
+        },
+        {
+          "noisy": "TURKPA",
+          "clean": "TÜRKPA",
+          "pred": "TÜrkPA",
+          "noisy_dist": 1,
+          "pred_dist": 2,
+          "regression": 1
+        },
+        {
+          "noisy": "M'sihin",
+          "clean": "Məsihin",
+          "pred": "Məşinin",
+          "noisy_dist": 1,
+          "pred_dist": 2,
+          "regression": 1
+        },
+        {
+          "noisy": "Cakvetadze",
+          "clean": "Çakvetadze",
+          "pred": "Çakvet daze",
+          "noisy_dist": 1,
+          "pred_dist": 2,
+          "regression": 1
+        },
+        {
+          "noisy": "State",
+          "clean": "State",
+          "pred": "Ştate",
+          "noisy_dist": 0,
+          "pred_dist": 1,
+          "regression": 1
+        },
+        {
+          "noisy": "meet",
+          "clean": "meet",
+          "pred": "met",
+          "noisy_dist": 0,
+          "pred_dist": 1,
+          "regression": 1
+        },
+        {
+          "noisy": "Industries",
+          "clean": "Industries",
+          "pred": "İndustries",
+          "noisy_dist": 0,
+          "pred_dist": 1,
+          "regression": 1
+        },
+        {
+          "noisy": "Ksaba",
+          "clean": "Ksaba",
+          "pred": "Kaba",
+          "noisy_dist": 0,
+          "pred_dist": 1,
+          "regression": 1
+        },
+        {
+          "noisy": "si",
+          "clean": "si",
+          "pred": "sı",
+          "noisy_dist": 0,
+          "pred_dist": 1,
+          "regression": 1
+        },
+        {
+          "noisy": "varisliyin",
+          "clean": "varisliyin",
+          "pred": "varişliyin",
+          "noisy_dist": 0,
+          "pred_dist": 1,
+          "regression": 1
+        },
+        {
+          "noisy": "doing",
+          "clean": "doing",
+          "pred": "ding",
+          "noisy_dist": 0,
+          "pred_dist": 1,
+          "regression": 1
+        },
+        {
+          "noisy": "effeqd1Vliyi",
+          "clean": "effektivliyi",
+          "pred": "əffekdi̇lliyi",
+          "noisy_dist": 4,
+          "pred_dist": 4,
+          "regression": 0
+        },
+        {
+          "noisy": "hoqumad",
+          "clean": "hökumət",
+          "pred": "hoqumad",
+          "noisy_dist": 4,
+          "pred_dist": 4,
+          "regression": 0
+        },
+        {
+          "noisy": "Lukasenko",
+          "clean": "Lukaşenko",
+          "pred": "Lukasenko",
+          "noisy_dist": 1,
+          "pred_dist": 1,
+          "regression": 0
+        },
+        {
+          "noisy": ",inli",
+          "clean": "çinli",
+          "pred": "Çinli",
+          "noisy_dist": 1,
+          "pred_dist": 1,
+          "regression": 0
+        },
+        {
+          "noisy": "'leykum",
+          "clean": "əleykum",
+          "pred": "Əleykum",
+          "noisy_dist": 1,
+          "pred_dist": 1,
+          "regression": 0
+        },
+        {
+          "noisy": "qurgusu",
+          "clean": "qurğusu",
+          "pred": "qurğuşu",
+          "noisy_dist": 1,
+          "pred_dist": 1,
+          "regression": 0
+        },
+        {
+          "noisy": "ci",
+          "clean": "cı",
+          "pred": "ci",
+          "noisy_dist": 1,
+          "pred_dist": 1,
+          "regression": 0
+        },
+        {
+          "noisy": "Xidmetinkn",
+          "clean": "Xidmətinkn",
+          "pred": "Xidmətinkən",
+          "noisy_dist": 1,
+          "pred_dist": 1,
+          "regression": 0
+        },
+        {
+          "noisy": "Yeni",
+          "clean": "Yəni",
+          "pred": "Yeni",
+          "noisy_dist": 1,
+          "pred_dist": 1,
+          "regression": 0
+        },
+        {
+          "noisy": "ci",
+          "clean": "cı",
+          "pred": "ci",
+          "noisy_dist": 1,
+          "pred_dist": 1,
+          "regression": 0
+        },
+        {
+          "noisy": "'fsuslar",
+          "clean": "əfsuslar",
+          "pred": "Əfsuslar",
+          "noisy_dist": 1,
+          "pred_dist": 1,
+          "regression": 0
+        },
+        {
+          "noisy": "in",
+          "clean": "ın",
+          "pred": "in",
+          "noisy_dist": 1,
+          "pred_dist": 1,
+          "regression": 0
+        },
+        {
+          "noisy": "u",
+          "clean": "ü",
+          "pred": "u",
+          "noisy_dist": 1,
+          "pred_dist": 1,
+          "regression": 0
+        },
+        {
+          "noisy": "in",
+          "clean": "ın",
+          "pred": "in",
+          "noisy_dist": 1,
+          "pred_dist": 1,
+          "regression": 0
+        },
+        {
+          "noisy": "TRIPP",
+          "clean": "TRİPP",
+          "pred": "TRIPP",
+          "noisy_dist": 1,
+          "pred_dist": 1,
+          "regression": 0
+        },
+        {
+          "noisy": "in",
+          "clean": "ın",
+          "pred": "in",
+          "noisy_dist": 1,
+          "pred_dist": 1,
+          "regression": 0
+        },
+        {
+          "noisy": "Sabanov",
+          "clean": "Şabanov",
+          "pred": "Sabanov",
+          "noisy_dist": 1,
+          "pred_dist": 1,
+          "regression": 0
+        }
+      ],
+      "regression_count": 29
+    },
+    {
+      "file": "test_sentences_azeri.json",
+      "n": 2000,
+      "accuracy": 0.3455,
+      "identity_baseline_accuracy": 0.017,
+      "cer": 0.02733637373799347,
+      "identity_cer": 0.14251726418116994,
+      "buckets": {
+        "0 (identical)": {
+          "correct": 27,
+          "total": 34
+        },
+        "1": {
+          "correct": 27,
+          "total": 48
+        },
+        "2": {
+          "correct": 43,
+          "total": 73
+        },
+        "3-4": {
+          "correct": 78,
+          "total": 202
+        },
+        "5+": {
+          "correct": 516,
+          "total": 1643
+        }
+      },
+      "mistake_examples": [
+        {
+          "noisy": "tarixən da bnu görmüük, bu gün d' shahidi oluruq",
+          "clean": "tarixən də bunu görmüşük, bu gün də şahidi oluruq",
+          "pred": "Tarixən da bunu görmüşük, bu gün də şahidi oluruq"
+        },
+        {
+          "noisy": "bildiriıib ki, biva modern və postmodern sulbda layihələndirilib və mürəkkəb konstruktiv quyuluşa malikdir",
+          "clean": "bildirilib ki, bina modern və postmodern üslubda layihələndirilib və mürəkkəb konstruktiv quruluşa malikdir",
+          "pred": "bildirilib ki, bina modern və postmodern sulubda layihələndirilib və mürəkkəb konstruktiv quyuluşa malikdir"
+        },
+        {
+          "noisy": "az-a istinadən xəbər uerir ki, xadlsə mayıv 24-də, ajtaxyınlandau qüchəsimdə qeyde alınlb",
+          "clean": "az-a istinadən xəbər verir ki, hadisə mayın 24-də, paytaxtın landau küçəsində qeydə alınıb",
+          "pred": "az-a istinadən xəbər verir ki, hadisə mayın 24-də, aytaxtınından qüçhəsində qeydə alınıb"
+        },
+        {
+          "noisy": "lazim gelende bu amilden istifade olunurvə bu teshkilat brenal olaraq rusiyaninmovqeyini qoruyur",
+          "clean": "lazım gələndə bu amildən istifadə olunur və bu təşkilat birmənalı olaraq rusiyanın mövqeyini qoruyur",
+          "pred": "lazım gələndə bu amildən istifadə olunur və bu təşkilat brenal olaraq rusiyanın mövqeyini qoruyur"
+        },
+        {
+          "noisy": "abdinov yəhya vüqar oğlu,30",
+          "clean": "abdinov yəhya vüqar oğlu, 30",
+          "pred": "abdinov rəhya vüqar oğlu, 30"
+        },
+        {
+          "noisy": "ehmedov bloger mehman h2seynovun “sancaq” adli “youtube” internt kanalina m2sahibe verib",
+          "clean": "əhmədov bloger mehman hüseynovun “sancaq” adlı “youtube” internet kanalına müsahibə verib",
+          "pred": "əhmədov bloger mehman hüseynovun “sancaq” adlı “youtube” internt kanalına müsahibə verib"
+        },
+        {
+          "noisy": "eıə xəmin ilatasi oma resstoran bizmesini verib",
+          "clean": "elə həmin il atası ona restoran biznesini verib",
+          "pred": "elə həmin ilatası oma restoran bizməsini verib"
+        },
+        {
+          "noisy": "lakin 8 mayda atıg 6 ölkə ıiderı moskuada idl",
+          "clean": "lakin 8 mayda artıq 6 ölkə lideri moskvada idi",
+          "pred": "lakin 8 mayda atıq 6 ölkə lideri moskvada idi"
+        },
+        {
+          "noisy": "tofiq bəhramoadına respublikastadionunda ceçiriıənoyun 2-1 “qarabağ” ınməqıubiyəti ilə başa çaıb.",
+          "clean": "tofiq bəhramov adına respublika stadionunda keçirilən oyun 2-1 “qarabağ” ın məğlubiyyəti ilə başa çatıb.",
+          "pred": "tofiq bəhramoadına respublika stadionunda keçirilən oyun 2-1 “qarabağ” innək lubiyyəti ilə başa çalıb."
+        },
+        {
+          "noisy": "bu, mövbələrdən qaçmağa, h'yıcanı azaltmağa kömək edəcək”",
+          "clean": "bu, növbələrdən qaçmağa, həyəcanı azaltmağa kömək edəcək”",
+          "pred": "bu, mövbələrdən qaçmağa, hərəcanı azaltmağa kömək edəcək”"
+        },
+        {
+          "noisy": "xalq artistikon2l xasiyevanin sehheti yeniden pislewib.",
+          "clean": "xalq artisti könül xasıyevanın səhhəti yenidən pisləşib.",
+          "pred": "xalq artistikönül xasıyevanın səhhəti yenidən pisləşib."
+        },
+        {
+          "noisy": "hektesad2fideyildi ki, ovaxtlar bu senetocagini \"adil i̇sgenderv teatri\" adlandirirdilar",
+          "clean": "heç təsadüfi deyildi ki, o vaxtlar bu sənət ocağını \"adil i̇sgəndərov teatrı\" adlandırırdılar",
+          "pred": "həktə sadəfi deyildi ki, ovaxtlar bu sənətoocağını \"adil i̇sgəndərv teatrı\" adlandırırdılar"
+        },
+        {
+          "noisy": "bundan basqa, iclasda cari herbi emekdashliq vəqarsida duran digermeseleler də diqqet mekezindeolub",
+          "clean": "bundan başqa, iclasda cari hərbi əməkdaşlıq və qarşıda duran digər məsələlər də diqqət mərkəzində olub",
+          "pred": "bundan başqa, iclasda cari hərbi əməkdaşlıq və qarşıda duran digər məsələlər də diqqət məmkəzində olub"
+        },
+        {
+          "noisy": "vyanadabmt-nin narkotik vasitelerwzrekomissiyasinin67-ci sessiyasioz iwinidavamedir.",
+          "clean": "vyanada bmt-nin narkotik vasitələr üzrə komissiyasının 67-ci sessiyası öz işini davam edir. ",
+          "pred": "vyanada bmt-nin narkotik vasitələr üzrə komissiyasının 67-ci sessiyası öz işini davam edir."
+        },
+        {
+          "noisy": "azertac xeber verir ki, macaritannbaw naziri ve azerbaycan prezidenti nahardagixish edibler",
+          "clean": "azərtac xəbər verir ki, macarıstanın baş naziri və azərbaycan prezidenti naharda çıxış ediblər",
+          "pred": "azərtac xəbər verir ki, macarıtanın baş naziri və azərbaycan prezidenti naharda çıxış ediblər"
+        },
+        {
+          "noisy": "mətbuat şurası dövlıt sərhəd xldmətinln abiti, mayor rövşən cahangirovun jurnalisylərahücumvnaünasibət bildirib.",
+          "clean": "mətbuat şurası dövlət sərhəd xidmətinin zabiti, mayor rövşən cahangirovun jurnalistlərə hücumuna münasibət bildirib.",
+          "pred": "mətbuat şurası dövlət sərhəd xidmətinin abiti, mator rövşən cahangirovun jurnalistləra hücumuna münasibət bildirib."
+        },
+        {
+          "noisy": "i̇taliyaya gedende bumeqsedimi deyismekfikrimdə olmadi ki, oradaheatimi davam etdirim",
+          "clean": "i̇taliyaya gedəndə bu məqsədimi dəyişmək fikrim də olmadı ki, orada həyatımı davam etdirim",
+          "pred": "i̇taliyaya gedəndə bu məqsədimi dəyişmək fikrimdə olmadı ki, orada həyatımı davam etdirim"
+        },
+        {
+          "noisy": "salyanda hereketde olan evakuatorun altinda qalaraq olenin shexsiyyeti melum olub.",
+          "clean": "salyanda hərəkətdə olan evakuatorun altında qalaraq ölənin şəxsiyyəti məlum olub.",
+          "pred": "salyanda hərəkətdə olan evakuatorun altında qalaraq ölkənin şəxsiyyəti məlum olub."
+        },
+        {
+          "noisy": ": 3-c2 mikrorayon dairesi- a",
+          "clean": ": 3-cü mikrorayon dairəsi - a",
+          "pred": ": 3-cü mikrorayon dairəsi-i"
+        },
+        {
+          "noisy": "antarktidada texminen 10.000imperator pinqvin alasibuzun qirilmasi neticsinde olwb.",
+          "clean": "antarktidada təxminən 10.000 imperator pinqvin balası buzun qırılması nəticəsində ölüb.",
+          "pred": "antarktidada təxminən 10.000 imperator pinqvin alasıb uzun qırılması nəticəsində ölüb."
+        },
+        {
+          "noisy": "beyanat: \"bu menfurhwcumlarin baiskarlari və maliyyeleshdirənleri cavab vermelidirler\"",
+          "clean": "bəyanat: \"bu mənfur hücumların baiskarları və maliyyələşdirənləri cavab verməlidirlər\"",
+          "pred": "bəyanat: \"bu mənfur hücumların bakışkarları və maliyyələşdirənləri cavab verməlidirlər\""
+        },
+        {
+          "noisy": "amma qapalı məkamlara, xəstəxanalaya giriri,kkifay' kədər maskasız adam var”",
+          "clean": "amma qapalı məkanlara, xəstəxanalara giririk, kifayət qədər maskasız adam var”",
+          "pred": "amma qapalı məkamlara, xəstəxanalara giririiri, kifayə qədər maskasız adam var”"
+        },
+        {
+          "noisy": "\"yeni qlobaliqtisadiyyatin 2022-ci ilde 1,6trilyon dollar gelir elde ede bileceyi halda mvharibeye ogre bunu ede bilmeyb",
+          "clean": "\"yəni qlobal iqtisadiyyatın 2022-ci ildə 1,6 trilyon dollar gəlir əldə edə biləcəyi halda müharibəyə görə bunu edə bilməyib",
+          "pred": "\"yeni qlobal iqtisadiyyatın 2022-ci ildə 1,6 trilyon dollar gəlir əldə edə biləcəyi halda müharibəyə görə bunu edə bilməyib"
+        },
+        {
+          "noisy": "xıdmət raisinin sözlərinə görə,sənaye balıg ovun qoyulam moratorlum meliorativ kollectorlara şamil edilmıy",
+          "clean": "xidmət rəisinin sözlərinə görə, sənaye balıq ovuna qoyulan moratorium meliorativ kollektorlara şamil edilmir",
+          "pred": "xidmət raisinin sözlərinə görə, sənaye balıq onun qoyulan moratorlum meliorativ kollektorlara şamil edilmir"
+        },
+        {
+          "noisy": "azəbaycavda 6 günlvk iw rejiml iıə işləyən m'ktəblərdə yanvarın 19-a – şənbə günü d'rs olacaq.",
+          "clean": "azərbaycanda 6 günlük iş rejimi ilə işləyən məktəblərdə yanvarın 19-da – şənbə günü dərs olacaq.",
+          "pred": "azərbaycanda 6 günlük iş rejimi ilə işləyən məktəblərdə yanvarın 19-a – şənbə günü dərs olacaq."
+        },
+        {
+          "noisy": "i̇ndi de bna bu prosesleri tenzimlemeye bashlaanda mwxtelif yerlerden tezyiqlergosterirler",
+          "clean": "i̇ndi də bna bu prosesləri tənzimləməyə başlayanda müxtəlif yerlərdən təzyiqlər göstərirlər",
+          "pred": "i̇ndi də buna bu prosesləri tənzimləməyə başlayanda müxtəlif yerlərdən təzyiqlər göstərirlər"
+        },
+        {
+          "noisy": "o, kwlli miqdarda borcuun oduqunu da bidirib",
+          "clean": "o, külli miqdarda borcunun olduğunu da bildirib",
+          "pred": "o, külli miqdarda borcunun oduqunu da bildirib"
+        },
+        {
+          "noisy": "i̇clasda komissiyaya daxil olan 130- yaxin müyaciətə baxlııb.",
+          "clean": "i̇clasda komissiyaya daxil olan 130-a yaxın müraciətə baxılıb.",
+          "pred": "i̇clasda komissiyaya daxil olan 130--yaxın müraciətə baxılıb."
+        },
+        {
+          "noisy": "epzodun tekrrini izleyen referi gorwshv davam etdirib",
+          "clean": "epizodun təkrarını izləyən referi görüşü davam etdirib",
+          "pred": "epzodun təkrini izləyən rəfəri görüşü davam etdirib"
+        },
+        {
+          "noisy": "yürk kinosunun əfsanəvi simalarlndan oıan cüneyy arkıv dün'v axşam saatlarında euinde haııpisləşərək xəstəxamaya aparilıb",
+          "clean": "türk kinosunun əfsanəvi simalarından olan cüneyt arkın dünən axşam saatlarında evində halı pisləşərək xəstəxanaya aparılıb",
+          "pred": "türk kinosunun əfsanəvi simalarından olan cüneyr arkın dünən axşam saatlarında evində halı pisləşərək xəstəxanaya aparılıb"
+        }
+      ],
+      "regressions_top": [
+        {
+          "noisy": "- ş'hidvə qazi ailələrivədiqət və qayğı dövıət siyasətimizin prioritet məsələərindən biri, mən deyərdim ki, birinclsidir",
+          "clean": "- şəhid və qazi ailələrinə diqqət və qayğı dövlət siyasətimizin prioritet məsələlərindən biri, mən deyərdim ki, birincisidir",
+          "pred": "- şəhid və qazi ailələri və diqət və qayğı dövlət siyasətimizin prioritet məsələlərindən birincəsidir",
+          "noisy_dist": 8,
+          "pred_dist": 27,
+          "regression": 19
+        },
+        {
+          "noisy": "- ıs, bu waxsler arasında qadınıar joxsa klşilər üstünlvg tıwkiledır? - 8 min 500nəfırin 30% - i qadın, 70% - i isə kişidir",
+          "clean": "- bəs, bu şəxslər arasında qadınlar yoxsa kişilər üstünlük təşkil edir? - 8 min 500 nəfərin 30% - i qadın, 70% - i isə kişidir",
+          "pred": "- is, bu şəxslər arasında qadınlar yoxsa kişilər üstünlük təşkil edir? - 8 min 500 - i i  i  isi iisi i sisi işi işi işi işi iş",
+          "noisy_dist": 16,
+          "pred_dist": 32,
+          "regression": 16
+        },
+        {
+          "noisy": "sənəddəqeyd edilir ki,ən cıddı aytım neapol(+10%), bair (+50%), taranto (+42%), və kataniyada (+34%) müşahidə edilir",
+          "clean": "sənəddə qeyd edilir ki, ən ciddi artım neapol (+10%), bari (+50%), taranto (+42%), və kataniyada (+34%) müşahidə edilir",
+          "pred": "sənəddə qeyd edilir ki, ən ciddi artım neapol (+10%), bair (+50%), taranto (+34%) müşahidə edilir",
+          "noisy_dist": 8,
+          "pred_dist": 24,
+          "regression": 16
+        },
+        {
+          "noisy": "yoluxma t'nəffvs yollarından xaric olan damcılar vasltəsiıə, dari səpilərinin möhtəviyjatıllə, slxtəmas yolu ilə baş verir",
+          "clean": "yoluxma tənəffüs yollarından xaric olan damcılar vasitəsilə, dəri səpkilərinin möhtəviyyatı ilə, sıx təmas yolu ilə baş verir",
+          "pred": "yoluxma tənəffüs yollarından xarici olan damcılar vasitəsilə, dari səpirlərinin möhtəviyyatı ilə baş verir",
+          "noisy_dist": 11,
+          "pred_dist": 24,
+          "regression": 13
+        },
+        {
+          "noisy": "2004: editado por cd brickell, br baum, wlahetterscheid, ac leslie, j mcneill, p terhane, f vrugtman, jh wiersema",
+          "clean": "2004: editado por cd brickell, br baum, wla hetterscheid, ac leslie, j mcneill, p trehane, f vrugtman, jh wiersema",
+          "pred": "2004: editado por cd briçkell, br baum, şilahetters çeid, ac lesliyə, j məcənill, p tərhanə, f vruğtman, jh wiersema",
+          "noisy_dist": 3,
+          "pred_dist": 15,
+          "regression": 12
+        },
+        {
+          "noisy": "kurratuayni's-s2hud vəmir'âtuarenasimeâni'l-gaybive'l-cud",
+          "clean": "kurratü ayni'ş-şühud və mir'âtu arenası meâni'l-gaybi ve'l-cud",
+          "pred": "kurratuaynı əs-sühüd və mirəəttar ənasi meniel-qaybi və l-cüd",
+          "noisy_dist": 10,
+          "pred_dist": 21,
+          "regression": 11
+        },
+        {
+          "noisy": "• vadır şah 2teymurazı kaytlı çari, onüm oğlu 2i̇arklini lse kaxetiya çarıtəyinetdi samuil gotlib qmeliv məliq yeqav",
+          "clean": "• nadir şah 2teymurazı kartli çarı, onun oğlu 2i̇raklini isə kaxetiya çarı təyin etdi samuil qotlib qmelin məlik yeqan",
+          "pred": "• vadir şah 2 teymuraazı kartlı çari, onun oğlu 2 i̇rarklini isə karetiya çarı təyin etdi samull götllib qətlib qətlib qətlib q",
+          "noisy_dist": 17,
+          "pred_dist": 26,
+          "regression": 9
+        },
+        {
+          "noisy": "repens anthemis repenswalter ceratocpehalus beccabunga (dc",
+          "clean": "repens anthemis repens walter ceratocephalus beccabunga (dc",
+          "pred": "repens anthemis repenswalter ceratoc peratocpe chalus beccabunqa (dc",
+          "noisy_dist": 3,
+          "pred_dist": 12,
+          "regression": 9
+        },
+        {
+          "noisy": "\"biz evə gəldik\" deyə pelenin oğlu vilabelmira sadıovunu - \"futbol m'bədini\" gotəq edərək yazıb",
+          "clean": "\"biz evə gəldik\" deyə pelenin oğlu vila belmira stadionunu - \"futbol məbədini\" geotəq edərək yazıb",
+          "pred": "\"biz evə gəldik\" deyə pelenin oğlu vilabelmira sadıovunu - \"futbol məbədini\" görək yazıb",
+          "noisy_dist": 6,
+          "pred_dist": 13,
+          "regression": 7
+        },
+        {
+          "noisy": "\"dialogo di galileo galilei linceo matematico\" - dunyanin iki baslica sistemi haqda dialoq",
+          "clean": "\"dialogo di galileo galilei linceo matematico\" - dünyanın iki başlıca sistemi haqda dialoq",
+          "pred": "\"dialogo digüalilei lanceo matematico\" - dünyanın iki başlıca sistemi haqda dialoq",
+          "noisy_dist": 5,
+          "pred_dist": 11,
+          "regression": 6
+        },
+        {
+          "noisy": "gyay astragalus beitashanemsis w",
+          "clean": "gray astragalus beitashanensis w",
+          "pred": "gyay astragalus bəitaşan əmşis w",
+          "noisy_dist": 2,
+          "pred_dist": 8,
+          "regression": 6
+        },
+        {
+          "noisy": "xatırladaq ki, paytaxt kabildəm başga əfanıstanın ən boyük şəhəyləriartıq “daliban” 'rəktının mazarətindədir",
+          "clean": "xatırladaq ki, paytaxt kabildən başqa əfqanıstanın ən böyük şəhərləri artıq “taliban” hərəkatının nazarətindədir",
+          "pred": "xatırladaq ki, paytaxt kabildən başqa əfanıstanın ən böyük şəhərləri artıq “taliban” erkəkatındədir",
+          "noisy_dist": 11,
+          "pred_dist": 16,
+          "regression": 5
+        },
+        {
+          "noisy": "i̇ki \"bugatti\", \"ferrari\" və \"mclaren\" də var\"",
+          "clean": "i̇ki \"bugatti\", \"ferrari\" və \"mclaren\" də var\"",
+          "pred": "i̇ki \"bu çattı\", \"fərrari\" və \"mmclaren\" də var\"",
+          "noisy_dist": 0,
+          "pred_dist": 5,
+          "regression": 5
+        },
+        {
+          "noisy": "i̇nterpress.az-inmelumatina gore, bunu i̇ranin xarici isler nazirinin mwavini seyi abbaseraqchi deyib.",
+          "clean": "i̇nterpress.az-ın məlumatına görə, bunu i̇ranın xarici işlər nazirinin müavini seyid abbas əraqçi deyib.",
+          "pred": "i̇nterpress.az-ın məlumatına görə, bunu i̇ranın xarici işlər nazirinin müavini seyib.",
+          "noisy_dist": 15,
+          "pred_dist": 19,
+          "regression": 4
+        },
+        {
+          "noisy": "ancaq oxuduqcadahss ləmişım ki, daha çox şey oxumalyam",
+          "clean": "ancaq oxuduqca da hiss eləmişəm ki, daha çox şey oxumalıyam",
+          "pred": "ancaq oxuduqca dəhsələmişim ki, daha çox şey oxumallar",
+          "noisy_dist": 6,
+          "pred_dist": 10,
+          "regression": 4
+        },
+        {
+          "noisy": "erigeyov wilenii o'kane erieron wislizeni (a",
+          "clean": "erigeron wilkenii o'kane erigeron wislizeni (a",
+          "pred": "ərigəyov şilenii o'kanə erieron wislizeni (a",
+          "noisy_dist": 4,
+          "pred_dist": 8,
+          "regression": 4
+        },
+        {
+          "noisy": "araşdırma zamanı məmu olub ki, m",
+          "clean": "araşdırma zamanı məlum olub ki, m",
+          "pred": "araşdırma zamanı məmul ki, m",
+          "noisy_dist": 2,
+          "pred_dist": 6,
+          "regression": 4
+        },
+        {
+          "noisy": "tvrkiyəli müğənnialeynatilci koronvirus tstlərinınməticələrinin səxv oıdugunu iddl edıb.",
+          "clean": "türkiyəli müğənni aleyna tilki koronavirus testlərinin nəticələrinin səhv olduğunu iddi edib. ",
+          "pred": "türkiyəli müğənni aleynatiici koronavirus testlərinin səhv olduğunu iddi edib.",
+          "noisy_dist": 15,
+          "pred_dist": 18,
+          "regression": 3
+        },
+        {
+          "noisy": "təykib:1 ədəd yumurta1 sst. qatıq1 st səkər kirşanı175 qr kərə yağı3 st. un1 ç.. qaabyma ozu1 ç.q. vanıl",
+          "clean": "tərkib:1 ədəd yumurta1 st. qatıq1 st şəkər kirşanı175 qr kərə yağı3 st. un1 ç.q. qabartma tozu1 ç.q. vanil",
+          "pred": "tərkib:1 ədəd yumurta 1 st. qatıqı st səkər qirşanı 175 qr kərə yağı 3 st. un1 ç.. qabatma özü1 ç.q. vanıl",
+          "noisy_dist": 9,
+          "pred_dist": 12,
+          "regression": 3
+        },
+        {
+          "noisy": "çönərək yakakl akarivin də çöndüyünü örür, lakin onlarıv bıri birinə baxmağınaqatar mane olr",
+          "clean": "çönərək takaki akarinin də çöndüyünü görür, lakin onların biri birinə baxmağına qatar mane olur",
+          "pred": "çönərək yakanla akarivin də çöndüyünü örür, lakin onların biri nə baxmağına qatar mane olar",
+          "noisy_dist": 8,
+          "pred_dist": 11,
+          "regression": 3
+        },
+        {
+          "noisy": "mattos dalbergia hosean prain dlbergia hosokawaecostion dalbergia hostilis benth",
+          "clean": "mattos dalbergia hoseana prain dalbergia hosokawae costion dalbergia hostilis benth",
+          "pred": "mattos dalbergia hosean parın dlbergia hosokaşae costion dalbergia hostilis benth",
+          "noisy_dist": 3,
+          "pred_dist": 6,
+          "regression": 3
+        },
+        {
+          "noisy": "təxminən 5-10manat fərq lacaq",
+          "clean": "təxminən 5-10 manat fərq olacaq",
+          "pred": "təxminən 5-10 manat fərqləcək",
+          "noisy_dist": 2,
+          "pred_dist": 5,
+          "regression": 3
+        },
+        {
+          "noisy": "məmmədəiyev s",
+          "clean": "məmmədəliyev s",
+          "pred": "məmmədəvi s",
+          "noisy_dist": 1,
+          "pred_dist": 4,
+          "regression": 3
+        },
+        {
+          "noisy": "anaxeber",
+          "clean": "anaxeber",
+          "pred": "ana xəbər",
+          "noisy_dist": 0,
+          "pred_dist": 3,
+          "regression": 3
+        },
+        {
+          "noisy": "qarabağdakı döyül'rdə öıən daha iqi eymənihərbçinin cəədiniv qaılqıarıaşkar edilib.",
+          "clean": "qarabağdakı döyüşlərdə ölən daha iki erməni hərbçinin cəsədinin qalıqları aşkar edilib.",
+          "pred": "qarabağdakı döyülərdə ölən daha iki erməni hərbçinin cərdinin cərdinin qəliqləri aşkar edilib.",
+          "noisy_dist": 12,
+          "pred_dist": 14,
+          "regression": 2
+        },
+        {
+          "noisy": "türkiyədeki veosiped, moped vəmotosiklet istehsalçıları 2022-ci iıdə 130 ölətəixrac edib.",
+          "clean": "türkiyədəki velosiped, moped və motosiklet istehsalçıları 2022-ci ildə 130 ölkəyə ixrac edib.",
+          "pred": "türkiyədəki veosiped, moped və motosiklet istehsalçıları 2022-ci ildə 130 ölkə təsir. adıb.",
+          "noisy_dist": 7,
+          "pred_dist": 9,
+          "regression": 2
+        },
+        {
+          "noisy": "dalğalarin üzərində \"160\" rəqəl həkk olunmuşduy",
+          "clean": "dalğaların üzərində \"160\" rəqəmi həkk olunmuşdur",
+          "pred": "dalğaların üzərində \"160\" rəqəl həkil həkk olunmuşdur",
+          "noisy_dist": 4,
+          "pred_dist": 6,
+          "regression": 2
+        },
+        {
+          "noisy": "əməkdar artistmanana çaparıdze sosial media hesabındakı paylaşımı ilə diqgət çəkib.",
+          "clean": "əməkdar artist manana çaparidze sosial media hesabındakı paylaşımı ilə diqqət çəkib.",
+          "pred": "əməkdar artıstmanana çaparızde sosial media hesabındakı paylaşımı ilə diqqət çəkib.",
+          "noisy_dist": 3,
+          "pred_dist": 5,
+          "regression": 2
+        },
+        {
+          "noisy": "dostuyev fərid batram oğlu – asgır",
+          "clean": "dostuyev fərid bayram oğlu – əsgər",
+          "pred": "dostyuveffərid batram oğlu – əsgər",
+          "noisy_dist": 3,
+          "pred_dist": 5,
+          "regression": 2
+        },
+        {
+          "noisy": "astrgaalus tremolsianus pauastragalus tribuloides delile astragalus tricarinatus a",
+          "clean": "astragalus tremolsianus pau astragalus tribuloides delile astragalus tricarinatus a",
+          "pred": "astragalus tremolisianus pauastragalus tribuloides də ilə astragalus tricarinatus a",
+          "noisy_dist": 3,
+          "pred_dist": 5,
+          "regression": 2
+        }
+      ],
+      "regression_count": 104
+    },
+    {
+      "file": "test_words_azeri.json",
+      "n": 2000,
+      "accuracy": 0.511,
+      "identity_baseline_accuracy": 0.0,
+      "cer": 0.07241077406396457,
+      "identity_cer": 0.13802338157284855,
+      "buckets": {
+        "0 (identical)": {
+          "correct": 0,
+          "total": 0
+        },
+        "1": {
+          "correct": 694,
+          "total": 1468
+        },
+        "2": {
+          "correct": 254,
+          "total": 441
+        },
+        "3-4": {
+          "correct": 65,
+          "total": 82
+        },
+        "5+": {
+          "correct": 9,
+          "total": 9
+        }
+      },
+      "mistake_examples": [
+        {
+          "noisy": "içləotulu",
+          "clean": "çiləotulu",
+          "pred": "içləotulu"
+        },
+        {
+          "noisy": "lələkttökmə",
+          "clean": "lələktökmə",
+          "pred": "lələkt tökmə"
+        },
+        {
+          "noisy": "ofmakler",
+          "clean": "hofmakler",
+          "pred": "ofmaller"
+        },
+        {
+          "noisy": "basmalama",
+          "clean": "basmalanma",
+          "pred": "basmalama"
+        },
+        {
+          "noisy": "küy-kələkçiblik",
+          "clean": "küy-kələkçilik",
+          "pred": "küy-kələkçiblik"
+        },
+        {
+          "noisy": "nəvaişlilik",
+          "clean": "nəvazişlilik",
+          "pred": "nəvaişlilik"
+        },
+        {
+          "noisy": "yaşılblandırma",
+          "clean": "yaşıllandırma",
+          "pred": "yaşılandırma"
+        },
+        {
+          "noisy": "anaquran",
+          "clean": "hanaquran",
+          "pred": "anaquran"
+        },
+        {
+          "noisy": "isesalici",
+          "clean": "işəsalıcı",
+          "pred": "isəsalıcı"
+        },
+        {
+          "noisy": "totulmaz",
+          "clean": "tutulmaz",
+          "pred": "totulmaz"
+        },
+        {
+          "noisy": "alli",
+          "clean": "valli",
+          "pred": "allı"
+        },
+        {
+          "noisy": "laınaltı",
+          "clean": "alınaltı",
+          "pred": "laknaltı"
+        },
+        {
+          "noisy": "mster",
+          "clean": "mister",
+          "pred": "master"
+        },
+        {
+          "noisy": "sarbian",
+          "clean": "sarban",
+          "pred": "sarbian"
+        },
+        {
+          "noisy": "alballı",
+          "clean": "albalı",
+          "pred": "alballı"
+        },
+        {
+          "noisy": "kamanllıq",
+          "clean": "kamallıq",
+          "pred": "kamanlıq"
+        },
+        {
+          "noisy": "saratmaq",
+          "clean": "saraltmaq",
+          "pred": "saratmaq"
+        },
+        {
+          "noisy": "anlaşma",
+          "clean": "analaşma",
+          "pred": "anlaşma"
+        },
+        {
+          "noisy": "löbbər",
+          "clean": "lövbər",
+          "pred": "löbər"
+        },
+        {
+          "noisy": "aqolporit",
+          "clean": "aqloporit",
+          "pred": "aqoloporit"
+        },
+        {
+          "noisy": "fırıldakçılıq",
+          "clean": "fırıldaqçılıq",
+          "pred": "fırıldakçılıq"
+        },
+        {
+          "noisy": "bhtinka",
+          "clean": "botinka",
+          "pred": "batinka"
+        },
+        {
+          "noisy": "kulfetlik",
+          "clean": "külfətlik",
+          "pred": "kulfetlik"
+        },
+        {
+          "noisy": "haşrdtop-sedan",
+          "clean": "hardtop-sedan",
+          "pred": "hard-top-sedan"
+        },
+        {
+          "noisy": "ementlənmək",
+          "clean": "sementlənmək",
+          "pred": "Ementlənmək"
+        },
+        {
+          "noisy": "eks-kra",
+          "clean": "eks-kral",
+          "pred": "əks-kra"
+        },
+        {
+          "noisy": "diliqıysalıq",
+          "clean": "diliqısalıq",
+          "pred": "diliqırsalıq"
+        },
+        {
+          "noisy": "nizibati-hüquqi",
+          "clean": "inzibati-hüquqi",
+          "pred": "nizibati-hüquqi"
+        },
+        {
+          "noisy": "teleskip",
+          "clean": "teleskop",
+          "pred": "teleskip"
+        },
+        {
+          "noisy": "sorulaq",
+          "clean": "sorulmaq",
+          "pred": "sorulaq"
+        }
+      ],
+      "regressions_top": [
+        {
+          "noisy": "setnesimo",
+          "clean": "sentesimo",
+          "pred": "sətnəsimi",
+          "noisy_dist": 2,
+          "pred_dist": 5,
+          "regression": 3
+        },
+        {
+          "noisy": "lfhıclar",
+          "clean": "lahıclar",
+          "pred": "İfaclar",
+          "noisy_dist": 1,
+          "pred_dist": 4,
+          "regression": 3
+        },
+        {
+          "noisy": "qohum-şəqrəba",
+          "clean": "qohum-əqrəba",
+          "pred": "qohum-şəqərə",
+          "noisy_dist": 1,
+          "pred_dist": 4,
+          "regression": 3
+        },
+        {
+          "noisy": "rmenoqrafik",
+          "clean": "renoqrafik",
+          "pred": "memonrqfik",
+          "noisy_dist": 1,
+          "pred_dist": 4,
+          "regression": 3
+        },
+        {
+          "noisy": "birnövbəlilipk",
+          "clean": "birnövbəlilik",
+          "pred": "bir növbəli lipik",
+          "noisy_dist": 1,
+          "pred_dist": 4,
+          "regression": 3
+        },
+        {
+          "noisy": "sallanğrıc",
+          "clean": "sallanğıc",
+          "pred": "sallan qırıc",
+          "noisy_dist": 1,
+          "pred_dist": 4,
+          "regression": 3
+        },
+        {
+          "noisy": "topalıdqaç",
+          "clean": "topaldıqaç",
+          "pred": "topalıda ça",
+          "noisy_dist": 2,
+          "pred_dist": 4,
+          "regression": 2
+        },
+        {
+          "noisy": "matahli",
+          "clean": "matahlı",
+          "pred": "mətahili",
+          "noisy_dist": 1,
+          "pred_dist": 3,
+          "regression": 2
+        },
+        {
+          "noisy": "ikihakimlifk",
+          "clean": "ikihakimlik",
+          "pred": "ikihakim lifik",
+          "noisy_dist": 1,
+          "pred_dist": 3,
+          "regression": 2
+        },
+        {
+          "noisy": "If yvou're the owner of this website:",
+          "clean": "If you're the owner of this website:",
+          "pred": "If yvvere the owner of this website:",
+          "noisy_dist": 1,
+          "pred_dist": 3,
+          "regression": 2
+        },
+        {
+          "noisy": "şiindillilik",
+          "clean": "şirindillilik",
+          "pred": "şirdililik",
+          "noisy_dist": 1,
+          "pred_dist": 3,
+          "regression": 2
+        },
+        {
+          "noisy": "cilcilimli",
+          "clean": "cincilimli",
+          "pred": "çilçilimli",
+          "noisy_dist": 1,
+          "pred_dist": 3,
+          "regression": 2
+        },
+        {
+          "noisy": "krevetklar",
+          "clean": "krevetkalar",
+          "pred": "krevetiklər",
+          "noisy_dist": 1,
+          "pred_dist": 3,
+          "regression": 2
+        },
+        {
+          "noisy": "iaybak",
+          "clean": "baybak",
+          "pred": "iyabak",
+          "noisy_dist": 1,
+          "pred_dist": 3,
+          "regression": 2
+        },
+        {
+          "noisy": "qaqlionevrit",
+          "clean": "qanqlionevrit",
+          "pred": "qaqlı onevrit",
+          "noisy_dist": 1,
+          "pred_dist": 3,
+          "regression": 2
+        },
+        {
+          "noisy": "peeklimaks",
+          "clean": "peneklimaks",
+          "pred": "pekli maks",
+          "noisy_dist": 1,
+          "pred_dist": 3,
+          "regression": 2
+        },
+        {
+          "noisy": "incəellik",
+          "clean": "incəbellik",
+          "pred": "incəlilik",
+          "noisy_dist": 1,
+          "pred_dist": 3,
+          "regression": 2
+        },
+        {
+          "noisy": "arximisşet",
+          "clean": "arximiset",
+          "pred": "arximişşət",
+          "noisy_dist": 1,
+          "pred_dist": 3,
+          "regression": 2
+        },
+        {
+          "noisy": "suqrışdırıcı",
+          "clean": "suqarışdırıcı",
+          "pred": "suraşdırıcı",
+          "noisy_dist": 1,
+          "pred_dist": 3,
+          "regression": 2
+        },
+        {
+          "noisy": "esıb-kəsmək",
+          "clean": "asıb-kəsmək",
+          "pred": "Eşəb-kəsmək",
+          "noisy_dist": 1,
+          "pred_dist": 3,
+          "regression": 2
+        },
+        {
+          "noisy": "qənnaıçılıq",
+          "clean": "qənnadıçılıq",
+          "pred": "qənançılıq",
+          "noisy_dist": 1,
+          "pred_dist": 3,
+          "regression": 2
+        },
+        {
+          "noisy": "disharboniklik",
+          "clean": "disharmoniklik",
+          "pred": "dişarboniklik",
+          "noisy_dist": 1,
+          "pred_dist": 3,
+          "regression": 2
+        },
+        {
+          "noisy": "idarəounan",
+          "clean": "idarəolunan",
+          "pred": "idarəonun",
+          "noisy_dist": 1,
+          "pred_dist": 3,
+          "regression": 2
+        },
+        {
+          "noisy": "dekretzasiya",
+          "clean": "dekretizasiya",
+          "pred": "dekretaziya",
+          "noisy_dist": 1,
+          "pred_dist": 3,
+          "regression": 2
+        },
+        {
+          "noisy": "vibrçəkic",
+          "clean": "vibroçəkic",
+          "pred": "vibrəçic",
+          "noisy_dist": 1,
+          "pred_dist": 3,
+          "regression": 2
+        },
+        {
+          "noisy": "koröz",
+          "clean": "korgöz",
+          "pred": "korps",
+          "noisy_dist": 1,
+          "pred_dist": 3,
+          "regression": 2
+        },
+        {
+          "noisy": "llebs",
+          "clean": "plebs",
+          "pred": "llbb",
+          "noisy_dist": 1,
+          "pred_dist": 3,
+          "regression": 2
+        },
+        {
+          "noisy": "ösərçəbudu",
+          "clean": "sərçəbudu",
+          "pred": "özərçə budu",
+          "noisy_dist": 1,
+          "pred_dist": 3,
+          "regression": 2
+        },
+        {
+          "noisy": "lemmiqlər",
+          "clean": "lemminqlər",
+          "pred": "ləmiqlər",
+          "noisy_dist": 1,
+          "pred_dist": 3,
+          "regression": 2
+        },
+        {
+          "noisy": "zarəfatsız",
+          "clean": "zarafatsız",
+          "pred": "Zərəfatsız",
+          "noisy_dist": 1,
+          "pred_dist": 3,
+          "regression": 2
+        }
+      ],
+      "regression_count": 898
+    }
+  ]
+}

@@ -1,3 +1,142 @@
+<<<<<<< HEAD
+"""Utility functions for training and evaluation."""
+
+import os
+import random
+import numpy as np
+import torch
+import torch.nn as nn
+import evaluate
+from pathlib import Path
+from typing import Dict, List, Any, Tuple, Optional
+from torch.cuda.amp import GradScaler
+
+import time
+
+def set_seed(seed: int) -> None:
+    """Set random seed for reproducibility."""
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed(seed)
+    torch.backends.cudnn.deterministic = True
+    
+def count_parameters(model: nn.Module) -> int:
+    """Count number of trainable parameters in the model."""
+    return sum(p.numel() for p in model.parameters() if p.requires_grad)
+
+def save_checkpoint(model: nn.Module, optimizer: torch.optim.Optimizer, 
+                   epoch: int, val_loss: float, step: int, 
+                   checkpoint_dir: str, scaler: Optional[GradScaler] = None) -> str:
+    """Save model checkpoint with optional FP16 scaler."""
+    if not os.path.exists(checkpoint_dir):
+        os.makedirs(checkpoint_dir)
+    
+    checkpoint_path = os.path.join(checkpoint_dir, f"checkpoint_epoch{epoch}_step{step}.pt")
+    torch.save({
+        'model_state_dict': model.state_dict(),
+        'optimizer_state_dict': optimizer.state_dict(),
+        'epoch': epoch,
+        'val_loss': val_loss,
+        'step': step,
+        'scaler': scaler.state_dict() if scaler else None
+    }, checkpoint_path)
+    
+    return checkpoint_path
+
+def load_checkpoint(model: nn.Module, optimizer: Optional[torch.optim.Optimizer], 
+                   checkpoint_path: str, device: torch.device, 
+                   scaler: Optional[GradScaler] = None,
+                   strict: bool = True) -> Tuple[nn.Module, 
+                                                Optional[torch.optim.Optimizer], 
+                                                Dict[str, Any]]:
+    """Load model checkpoint with optional FP16 scaler."""
+    checkpoint = torch.load(checkpoint_path, map_location=device)
+    load_result = model.load_state_dict(checkpoint['model_state_dict'], strict=strict)
+    
+    optimizer_loaded = False
+    if optimizer is not None and 'optimizer_state_dict' in checkpoint:
+        try:
+            optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
+            optimizer_loaded = True
+        except Exception:
+            optimizer_loaded = False
+    
+    if scaler is not None and 'scaler' in checkpoint and checkpoint['scaler'] is not None:
+        scaler.load_state_dict(checkpoint['scaler'])
+    
+    metadata = {
+        'epoch': checkpoint.get('epoch', 0),
+        'val_loss': checkpoint.get('val_loss', float('inf')),
+        'step': checkpoint.get('step', 0),
+        'scaler': checkpoint.get('scaler', None),
+        'missing_keys': getattr(load_result, 'missing_keys', []),
+        'unexpected_keys': getattr(load_result, 'unexpected_keys', []),
+        'optimizer_loaded': optimizer_loaded
+    }
+    
+    return model, optimizer, metadata
+
+def compute_metrics(predictions: List[str], references: List[str]) -> Dict[str, float]:
+    """Compute evaluation metrics."""
+    bleu = evaluate.load("bleu")
+    cer = evaluate.load("cer")
+    wer = evaluate.load("wer")
+
+    # Filter to aligned string pairs to avoid empty or non-string entries
+    pairs = [
+        (p, r)
+        for p, r in zip(predictions, references)
+        if isinstance(p, str) and isinstance(r, str)
+    ]
+    if not pairs:
+        return {"bleu": 0.0, "cer": 0.0, "wer": 0.0, "accuracy": 0.0}
+
+    preds = [p for p, _ in pairs]
+    refs = [r for _, r in pairs]
+
+    results = {}
+
+    # BLEU requires non-empty references/predictions; skip if all empty
+    bleu_pairs = [(p, r) for p, r in pairs if p.strip() and r.strip()]
+    if bleu_pairs:
+        bleu_preds = [p for p, _ in bleu_pairs]
+        bleu_refs = [r for _, r in bleu_pairs]
+        try:
+            bleu_score = bleu.compute(predictions=bleu_preds, references=bleu_refs)
+            results["bleu"] = bleu_score.get("bleu", 0.0)
+        except Exception:
+            results["bleu"] = 0.0
+    else:
+        results["bleu"] = 0.0
+
+    # CER/WER can still fail on empty inputs; guard similarly
+    try:
+        results["cer"] = cer.compute(predictions=preds, references=refs)
+    except Exception:
+        results["cer"] = 0.0
+
+    try:
+        results["wer"] = wer.compute(predictions=preds, references=refs)
+    except Exception:
+        results["wer"] = 0.0
+
+    # Accuracy (percentage of exactly correct predictions)
+    results["accuracy"] = sum(p == r for p, r in pairs) / len(pairs)
+
+    return results
+
+def get_corrected_text(outputs: torch.Tensor, tokenizer) -> List[str]:
+    """Convert model outputs to corrected text."""
+    # outputs: [batch_size, seq_len, vocab_size]
+    predictions = outputs.argmax(2)  # [batch_size, seq_len]
+    
+    corrected_texts = []
+    for pred in predictions:
+        corrected = tokenizer.decode(pred.tolist())
+        corrected_texts.append(corrected)
+    
+=======
 """Utility functions for training and evaluation."""
 
 import os
@@ -103,4 +242,5 @@ def get_corrected_text(outputs: torch.Tensor, tokenizer) -> List[str]:
         corrected = tokenizer.decode(pred.tolist())
         corrected_texts.append(corrected)
     
+>>>>>>> origin/master
     return corrected_texts
